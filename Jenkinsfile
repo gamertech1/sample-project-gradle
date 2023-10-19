@@ -1,6 +1,7 @@
 pipeline {
   agent any
   stages{
+    steps{
     stage("updating demployment file"){
       echo "updating deployment.yaml file"
        withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
@@ -15,7 +16,8 @@ pipeline {
                         sh "git commit -m 'Done by Jenkins Job changemanifest: ${BUILD_NUMBER}'"
                         sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/sample-project-gradle.git HEAD:master"
 
-            }
+          
+       }}
     }
   }
 }
