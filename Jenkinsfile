@@ -10,7 +10,7 @@ pipeline {
                         sh "git config user.name gamertech1"
                         //sh "git switch master"
                         sh "cat deployment.yaml"
-                        sh "sed -i 's+gamertech1/django-app.*+gamertech1/django-app:${BUILD_NUMBER}+g' deployment.yaml"
+                        sh "sed -i 's+gamertech1/django-app.*+gamertech1/django-app:${env.doc}+g' deployment.yaml"
                         sh "cat deployment.yaml"
                         sh "git add ."
                         sh "git commit -m 'Done by Jenkins Job changemanifest: ${BUILD_NUMBER}'"
