@@ -1,8 +1,8 @@
 pipeline {
   agent any
   stages{
-    steps{
     stage("updating demployment file"){
+      steps{
       echo "updating deployment.yaml file"
        withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                         //def encodedPassword = URLEncoder.encode("$GIT_PASSWORD",'UTF-8')
